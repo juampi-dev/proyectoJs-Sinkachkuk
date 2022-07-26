@@ -29,3 +29,17 @@ const guardaProd = () => {
     listaProductos.push(nuevoProd);
     return nuevoProd;
 }
+
+function printProd() {
+    listaProductos.forEach((prod) => {
+        let prodCargado = document.createElement("div");
+        prodCargado.innerHTML = `<h4>${prod.nombre}`
+        contProd.append(prodCargado);
+        return prodCargado;
+    })
+}
+
+/* // Eventos
+document.getElementById("contenedorForm").addEventListener("submit", function() {
+    const name = 
+})  */
