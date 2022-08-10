@@ -10,6 +10,7 @@
 </head>
 <body>
 
+  <!-- NAVEGADOR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
           <a class="navbar-brand" href="./index.html">Gestor de Stock</a>
@@ -23,7 +24,7 @@
                 <a class="nav-link active" href="./index.html">Home
                 </a>
               </li>
-              <li class="nav-item">
+<!--               <li class="nav-item">
                 <a class="nav-link" href="./pages/calculadorIva.html">Calculador de IVA</a>
               </li>
               <li class="nav-item dropdown">
@@ -33,7 +34,7 @@
                   <a class="dropdown-item" href="#">Manejo integral de Clientes</a>
                   <a class="dropdown-item" href="#">Manejo integral de Proveedores</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Manejo integral de Stock</a>
+                  <a class="dropdown-item" href="#">Manejo integral de Stock</a> -->
                 </div>
               </li>
             </ul>
@@ -41,18 +42,41 @@
         </div>
       </nav>
 
-      <form action="" id="contenedorForm">
-        <input type="text" placeholder="Ingrese el nombre" id="nombre">
-        <input type="text" placeholder="Ingrese el precio" id="precio">
-        <input type="number" placeholder="Ingrese la cantidad" id="cantidades">
-        <button type="submit">INGRESAR PRODUCTO</button>
-      </form>
-
-      <div class="contProd">
-      </div>
-
-    <script src="./js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+      <!-- INTERFAZ -->
     
-</body>
+<div class="contenedorGeneral">
+  <div id="app" class="row pt-5">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h4>INGRESE EL PRODUCTO</h4>
+        </div>
+        <form id="product-form">
+          <fieldset>
+            <div class="form-group">
+              <input type="text" placeholder="NOMBRE" id="nombre" class="form-control" required="required">
+            </div>
+            <div class="form-group">
+              <input type="number" placeholder="PRECIO" id="precio" class="form-control" step="0.01" min="0.01" required="required">
+            </div>
+            <div class="form-group">
+              <input type="number" placeholder="CANTIDADES" id="cantidades" class="form-control" min="1" required="required">
+            </div>
+            <input type="submit" id="prodButton" class="btn btn-primary btn-block" value="INGRESAR">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    </div>
+      <div id="product-list" class="col-md-8"></div>
+  </div>
+
+<footer>  
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/main.js"></script>    
+
+  </body>
 </html>

@@ -1,45 +1,79 @@
-//Calculamos el IVA con la funcion
-/* const iva = x => x*0.21;
-let precioConIva = (iva(precio) + precio);
+/* FORMULA QUE VOY A USAR EN EL FUTURO
+    const iva = x => x*0.21;
+    let precioConIva = (iva(precio) + precio); */
 
-//Imprimimos el precio para el consumidor final
-alert(`El precio unitario final del producto con IVA es $${precioConIva}.`);
+// ARRAY CONTADOR DE PRODUCTOS
 
-//Imprimimos el valor total de los productos ingresados
-const patrimonioNeto = (precioConIva * cantidades);
-alert(`El patrimonio total de ${nombre} ingresado es $${patrimonioNeto}.`) */
+let cantidadProductos = 0;
 
-// --------------------------------------------------------------------------------------------- //
+// CLASES
 
-class ProductoNuevo {
-    constructor(nombre, precio, cantidades) {
+class Product{
+    constructor(nombre, precio, cantidades){
         this.nombre = nombre;
         this.precio = precio;
         this.cantidades = cantidades;
     }
 }
 
-let listaProductos = [];
+class Interfaz{
+    agregaProd(product){
+        cantidadProductos++;
+        const productList = document.getElementById("product-list");
+        const element = document.createElement("div");
+        element.innerHTML = `
+            <div class="cardStock card text-center mb-4">
+                <div>
+                    <strong>PRODUCTO</strong>: ${product.nombre}
+                    <strong>PRECIO</strong>: $${product.precio}
+                    <strong>CANTIDADES</strong>: ${product.cantidades}
+                    <a href="#" class="btn btn-danger" name="delete">BORRAR</a>
+                </div>
+            </div>
+            <div class="contadorProductos card text-center">
+                <div>
+                    <strong>TOTAL DE ARTÍCULOS INGRESADOS</strong>: ${cantidadProductos}
+                </div>
+            </div>`
+        productList.appendChild(element);
+        this.resetearForm();
+    }
 
-const guardaProd = () => {
-    let nombre = document.getElementById("nombre").value;
-    let precio = document.getElementById("precio").value;
-    let cantidades = document.getElementById("cantidades").value;
-    let nuevoProd = new Producto(nombre, precio, cantidades);
-    listaProductos.push(nuevoProd);
-    return nuevoProd;
+    resetearForm(){
+        document.getElementById("product-form").reset();
+    }
+    elimProd(element){
+        if(element.name === "delete"){
+            cantidadProductos --;
+            element.parentElement.parentElement.parentElement.remove();
+            Swal.fire(
+                'Producto eliminado',
+                '',
+                'error'
+              )
+        }
+    }
 }
 
-function printProd() {
-    listaProductos.forEach((prod) => {
-        let prodCargado = document.createElement("div");
-        prodCargado.innerHTML = `<h4>${prod.nombre}`
-        contProd.append(prodCargado);
-        return prodCargado;
-    })
-}
+// EVENTOS
 
-/* // Eventos
-document.getElementById("contenedorForm").addEventListener("submit", function() {
-    const name = 
-})  */
+document.getElementById("product-form").addEventListener("submit", function(disableRefresh){
+    Swal.fire(
+        'Producto agregado al stock',
+        '',
+        'success'
+      )
+    const nombre = document.getElementById("nombre").value;
+    const precio = document.getElementById("precio").value;
+    const cantidades = document.getElementById("cantidades").value;
+    const product = new Product(nombre, precio, cantidades);
+    const interfaz = new Interfaz();
+    interfaz.agregaProd(product);
+    disableRefresh.preventDefault();
+})
+
+document.getElementById("product-list").addEventListener("click", function(e){
+    const interfaz = new Interfaz;
+    interfaz.elimProd(e.target)
+})
+
