@@ -1,8 +1,10 @@
-/* FORMULA QUE VOY A USAR EN EL FUTURO
-    const iva = x => x*0.21;
-    let precioConIva = (iva(precio) + precio); */
+// VARIABLES
 
-// ARRAY CONTADOR DE PRODUCTOS
+const app = document.getElementById("app");
+app.style.display = 'none';
+const logIn = document.getElementById("logIn");
+
+// CONTADOR DE PRODUCTOS
 
 let cantidadProductos = 0;
 
@@ -75,5 +77,8 @@ document.getElementById("product-form").addEventListener("submit", function(disa
 document.getElementById("product-list").addEventListener("click", function(e){
     const interfaz = new Interfaz;
     interfaz.elimProd(e.target)
-})
+}) */
 
+/* FORMULA QUE VOY A USAR EN EL FUTURO
+    const iva = x => x*0.21;
+    let precioConIva = (iva(precio) + precio); */
