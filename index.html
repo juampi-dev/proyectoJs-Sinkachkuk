@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto Final :: Curso JavaScript 2022 Coderhouse</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/estilos.css">
+    <link rel="stylesheet" href="./styles.scss/estilos.css">
 </head>
 <body>
 
@@ -49,13 +49,13 @@
 <div id="welcomeUser" class="card mx-auto w-50 mt-4">
   <h1 class="title mx-auto">¡BIENVENIDO!</h1>
   <h2 class="subtitle mx-auto mt-1 text-center">Inicie sesión para continuar</h2>
-  <button class="btn btn-primary mx-auto w-50 mb-2" data-bs-toggle="modal" data-bs-target="#myModal">INICIAR SESIÓN</button>
+  <button class="btn btn-primary mx-auto w-50 mt-1 mb-2" data-bs-toggle="modal" data-bs-target="#myModal">INICIAR SESIÓN</button>
 
   <div class="modal" id="myModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog p-5">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title"></h3>
+          <h3 class="modal-title">Inicio de sesión</h3>
           <button class="btn btn-close" data-bs-dismiss="modal"></button>
         </div>
 
@@ -63,13 +63,17 @@
           <fieldset>
             <form>
               <div class="form-group">
-                <input type="text" placeholder="Nombre de usuario" id="nombreUsuario" class="form-control" required="required">
+                <input type="text" placeholder="Nombre de usuario" id="nombreUsuario" class="form-control mt-1 mb-2" required="required">
+              </div>
+              <div class="form-group">
+                <input type="password" placeholder="Contraseña" id="passwordUsuario" class="form-control mt-1 mb-2" required="required">
+              </div>
             </form>
           </fieldset>
         </div>
 
         <div class="modal-footer">
-          <input type="submit" id="logIn" class="btn btn-primary btn-block" value="LOG IN">
+          <button type="submit" id="logIn" class="btn btn-primary btn-block">INGRESAR</button>
         </div>
 
       </div>
@@ -77,11 +81,17 @@
   </div>
 </div>
 
+<!-- RELOJ -->
+<div id="reloj" class="m-3 text-center">
+</div>
+
+<!-- APLICACION -->
+
 <div class="container">
-  <div id="app" class="row pt-5">
+  <div id="app" class="row pt-3">
     <div class="col-md-4">
-      <div class="card">
-        <div class="card-header">
+      <div class="card mt-4">
+        <div class="card-header text-center p-2">
           <h4>INGRESE EL PRODUCTO</h4>
         </div>
         <form id="product-form">
@@ -95,21 +105,43 @@
             <div class="form-group">
               <input type="number" placeholder="CANTIDADES" id="cantidades" class="form-control" min="1" required="required">
             </div>
-            <input type="submit" id="prodButton" class="btn btn-primary btn-block" value="INGRESAR">
+            <div class="row m-1">
+              <div class="col">
+              </div>
+              <div class="col">
+                <input type="submit" id="prodButton" class="btn btn-primary btn-block" value="INGRESAR">
+              </div>
+              <div class="col">
+              </div>
+            </div>
           </fieldset>
         </form>
       </div>
     </div>
     </div>
-      <div id="product-list" class="col-md-8"></div>
+      <div id="product-list" class="col mt-3"></div>
 </div>
 
-<footer>  
-</footer>
+<!-- <footer class="piePagina">
+  <div class="pie1">
+      <div class="pieBox">
+      </div>
+      <div class="pieBox">
+          <div class="redesSociales">
+              <a href="https://www.linkedin.com/in/juanps94/" class="fa fa-linkedin"></a>
+              <a href="https://github.com/juan-ps" class="fa fa-github"></a>
+          </div>
+      </div>
+  </div>
+  <div class="pie2">
+      <small>&copy; 2022 Gestor de stock online - <b>Coderhouse Curso JavaScript.</b></small>
+  </div>
+</footer> -->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/main.js"></script>    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./js/main.js"></script>
+  <script src="https://kit.fontawesome.com/ebbc020d49.js" crossorigin="anonymous"></script>
 
   </body>
 </html>
