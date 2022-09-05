@@ -48,6 +48,7 @@ class Product{
 
 class Interfaz{
     agregaProd(product){
+        getData(api);
         const productList = document.getElementById("product-list");
         const element = document.createElement('div');
         element.innerHTML = `
@@ -56,7 +57,10 @@ class Interfaz{
                     <strong>PRODUCTO</strong>: ${product.nombre}
                     <strong>PRECIO</strong>: $${product.precio}
                     <strong>CANTIDADES</strong>: ${product.cantidades}
-                    <div id="horaProducto" class="m-3 text-center">Producto ingresado en: ${horaProducto}
+                    <div>
+                        <strong>Producto ingresado el</strong>:
+                        <div id="horaProducto" class="m-3 text-center">
+                        </div>
                     </div>
                     <a href="#" class="btn btn-danger m-1" name="delete">BORRAR</a>
                 </div>
@@ -113,21 +117,25 @@ document.getElementById("product-list").addEventListener("click", function(e){
 
 // FETCH (World Time API)
 
-const horaProducto = document.getElementById("horaProducto")
 const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '7812a65835mshb020231a7307c1cp1d6384jsn3ec67c303211',
-		'X-RapidAPI-Host': 'world-time2.p.rapidapi.com'
-	}
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': '7812a65835mshb020231a7307c1cp1d6384jsn3ec67c303211',
+        'X-RapidAPI-Host': 'world-time2.p.rapidapi.com'
+    }
 };
 
-const api = fetch('https://world-time2.p.rapidapi.com/ip', options)
-    .then(response => response.json())
-    .then(response => {        
-        document.getElementById('reloj').innerHTML = `<p><strong>${response.datetime}</strong></p>`;
-    })
-    .catch(err => console.error(err));
+const api = 'https://world-time2.p.rapidapi.com/ip';
+
+const getData = (apiUrl) => {
+    return fetch(apiUrl, options)
+        .then(response => response.json())
+        .then(json => {
+                let time = JSON.stringify(json.datetime)
+                document.getElementById('horaProducto').innerHTML = time;
+        })
+        .catch (error => {console.error('Error: ', error)})
+}
 
 // IVA
 
