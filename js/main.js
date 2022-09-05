@@ -113,9 +113,7 @@ document.getElementById("product-list").addEventListener("click", function(e){
 
 // FETCH (World Time API)
 
-const 
-
-const reloj = document.getElementById("reloj")
+const horaProducto = document.getElementById("horaProducto")
 const options = {
 	method: 'GET',
 	headers: {
@@ -124,7 +122,7 @@ const options = {
 	}
 };
 
-fetch('https://world-time2.p.rapidapi.com/ip', options)
+const api = fetch('https://world-time2.p.rapidapi.com/ip', options)
     .then(response => response.json())
     .then(response => {        
         document.getElementById('reloj').innerHTML = `<p><strong>${response.datetime}</strong></p>`;
