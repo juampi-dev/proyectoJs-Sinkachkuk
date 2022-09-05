@@ -10,133 +10,132 @@
 </head>
 <body>
 
-  <!-- NAVEGADOR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.html">Gestor de Stock</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-      
-          <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link active" href="./index.html">Home
-                </a>
-              </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="./pages/calculadorIva.html">Calculador de IVA</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Opciones</a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Edición de Ventas</a>
-                  <a class="dropdown-item" href="#">Manejo integral de Clientes</a>
-                  <a class="dropdown-item" href="#">Manejo integral de Proveedores</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Manejo integral de Stock</a>
-                </div>
-              </li> -->
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-  <!-- INTERFAZ -->
+<!-- NAVEGADOR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">Gestor de Stock</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="./index.html">Home</a>
+          </li>
+          <li id="sessionUser" class="nav-item">
+            <a class="nav-link" href=""></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
 <!-- MODAL PARA INICIO DE SESION -->
 
-<div id="welcomeUser" class="card mx-auto w-50 mt-4">
-  <h1 class="title mx-auto">¡BIENVENIDO!</h1>
-  <h2 class="subtitle mx-auto mt-1 text-center">Inicie sesión para continuar</h2>
-  <button class="btn btn-primary mx-auto w-50 mt-1 mb-2" data-bs-toggle="modal" data-bs-target="#myModal">INICIAR SESIÓN</button>
+<section id="bienvenida">
+  <div id="welcomeUser" class="card mx-auto w-50 mt-4">
+    <h1 class="title mx-auto">¡BIENVENIDO!</h1>
+    <h2 class="subtitle mx-auto mt-1 text-center">Inicie sesión para continuar</h2>
+    <button class="btn btn-primary mx-auto w-50 mt-1 mb-2" data-bs-toggle="modal" data-bs-target="#myModal">INICIAR SESIÓN</button>
 
-  <div class="modal" id="myModal">
-    <div class="modal-dialog p-5">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title">Inicio de sesión</h3>
-          <button class="btn btn-close" data-bs-dismiss="modal"></button>
+    <div class="modal" id="myModal">
+      <div class="modal-dialog p-5">
+        <div class="modal-content">
+          <div class="modal-header bg-info">
+            <h3 class="modal-title">Inicio de sesión</h3>
+            <button class="btn btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <fieldset>
+              <form id="inicioSesion">
+                <div class="form-group">
+                  <input type="text" placeholder="Nombre de usuario" id="usuario" class="form-control mt-1 mb-2" required="required">
+                </div>
+                <div class="form-group">
+                  <input type="password" placeholder="Contraseña" id="password" class="form-control mt-1 mb-2" required="required">
+                </div>
+                <div class="row m-1">
+                  <div class="col">
+                  </div>
+                  <div class="col">
+                    <input type="button" id="botonLogin" class="btn btn-primary btn-block mt-2" onclick="logIn()" value="INGRESAR">
+                  </div>
+                  <div class="col">
+                  </div>
+                </div>
+              </form>
+            </fieldset>
+          </div>
         </div>
-
-        <div class="modal-body">
-          <fieldset>
-            <form>
-              <div class="form-group">
-                <input type="text" placeholder="Nombre de usuario" id="nombreUsuario" class="form-control mt-1 mb-2" required="required">
-              </div>
-              <div class="form-group">
-                <input type="password" placeholder="Contraseña" id="passwordUsuario" class="form-control mt-1 mb-2" required="required">
-              </div>
-            </form>
-          </fieldset>
-        </div>
-
-        <div class="modal-footer">
-          <button type="submit" id="logIn" class="btn btn-primary btn-block">INGRESAR</button>
-        </div>
-
       </div>
     </div>
-  </div>
-</div>
 
-<!-- RELOJ -->
-<div id="reloj" class="m-3 text-center">
-</div>
+  </div>
+</section>
 
 <!-- APLICACION -->
 
-<div class="container">
-  <div id="app" class="row pt-3">
-    <div class="col-md-4">
-      <div class="card mt-4">
-        <div class="card-header text-center p-2">
-          <h4>INGRESE EL PRODUCTO</h4>
-        </div>
-        <form id="product-form">
-          <fieldset>
-            <div class="form-group">
-              <input type="text" placeholder="NOMBRE" id="nombre" class="form-control" required="required">
-            </div>
-            <div class="form-group">
-              <input type="number" placeholder="PRECIO" id="precio" class="form-control" step="0.01" min="0.01" required="required">
-            </div>
-            <div class="form-group">
-              <input type="number" placeholder="CANTIDADES" id="cantidades" class="form-control" min="1" required="required">
-            </div>
-            <div class="row m-1">
-              <div class="col">
-              </div>
-              <div class="col">
-                <input type="submit" id="prodButton" class="btn btn-primary btn-block" value="INGRESAR">
-              </div>
-              <div class="col">
-              </div>
-            </div>
-          </fieldset>
-        </form>
-      </div>
-    </div>
-    </div>
-      <div id="product-list" class="col mt-3"></div>
-</div>
-
-<!-- <footer class="piePagina">
-  <div class="pie1">
-      <div class="pieBox">
-      </div>
-      <div class="pieBox">
-          <div class="redesSociales">
-              <a href="https://www.linkedin.com/in/juanps94/" class="fa fa-linkedin"></a>
-              <a href="https://github.com/juan-ps" class="fa fa-github"></a>
+<section id="application">
+  <div class="container p-3">
+    <div id="app" class="row pt-1">
+      <div class="col-md-5">
+        <div class="card mt-4">
+          <div class="card-header text-center p-2">
+            <h4>INGRESE EL PRODUCTO</h4>
           </div>
+          <form id="product-form">
+            <fieldset>
+              <div class="form-group">
+                <input type="text" placeholder="NOMBRE" id="nombre" class="form-control" required="required">
+              </div>
+              <div class="form-group">
+                <input type="number" placeholder="PRECIO" id="precio" class="form-control" step="0.01" min="0.01" required="required">
+              </div>
+              <div class="form-group">
+                <input type="number" placeholder="CANTIDADES" id="cantidades" class="form-control" min="1" required="required">
+              </div>
+              <div class="row m-1">
+                <div class="col">
+                </div>
+                <div class="col">
+                  <input type="submit" id="prodButton" class="btn btn-primary btn-block" value="INGRESAR">
+                </div>
+                <div class="col">
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
       </div>
+      <div class="card col-md-7 text-center mx-auto my-3 w-25 bg-light">
+        <div class="mt-1">
+          <strong>TOTAL DE ARTÍCULOS INGRESADOS</strong>:
+        </div>
+        <div>
+          <p id="contadorProductos" class="fs-2 mt-2 text-decoration-underline">0</p>
+        </div>
+      </div>
+      <div id="product-list" class="col-md-12 d-flex flex-nowrap justify-content-evenly mt-3">
+      </div>
+    </div>
   </div>
-  <div class="pie2">
-      <small>&copy; 2022 Gestor de stock online - <b>Coderhouse Curso JavaScript.</b></small>
+</section>
+
+<!-- FOOTER -->
+
+<footer class="text-white bg-dark mt-auto text-center fixed-bottom">
+  <div class="my-2 mx-auto text-center">
+    <div class="form-check-inline">
+      <a href="https://www.linkedin.com/in/juanps94/" target="_blank" class="btn btn-secondary fa fa-linkedin text-reset"></a>
+    </div>
+    <div class="form-check-inline text-center mx-5">
+      <small>&copy; 2022 Gestor de Stock online - by Juan Pablo Sinkachkuk - <b>Coderhouse Curso JavaScript.</b></small>
+    </div>
+    <div class="form-check-inline">
+      <a href="https://github.com/juan-ps" target="_blank" class="btn btn-secondary fa fa-github text-reset"></a>
+    </div>
   </div>
-</footer> -->
+</footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

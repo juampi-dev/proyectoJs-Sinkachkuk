@@ -1,73 +1,44 @@
-// FETCH (World Time API)
+// VARIABLES - DOM
 
-/* const reloj = document.getElementById('reloj'); */
+const inicioSesion = document.getElementById('bienvenida');
+inicioSesion.style.display = 'run-in';
 
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '7812a65835mshb020231a7307c1cp1d6384jsn3ec67c303211',
-		'X-RapidAPI-Host': 'world-time2.p.rapidapi.com'
-	}
-};
+const modalForm = document.querySelector("#inicioSesion");
 
-fetch('https://world-time2.p.rapidapi.com/ip', options)
-	.then(response => response.json())
-	.then(response => {
-        console.log(response);        
-        document.getElementById('reloj').innerHTML = `<p>Es la hora <strong>${response.datetime}</strong>.</p>`;
-    })
-	.catch(err => console.error(err));
+const app = document.querySelector("#application");
+app.style.display = "none";
 
-// VARIABLES
+const contador = document.querySelector("#contadorProductos");
 
-const app = document.getElementById('app');
-app.style.display = 'none';
-const inicioSesion = document.getElementById('welcomeUser');
-const popupLogIn = document.getElementById('myModal')
-const nombreUsuario = document.getElementById('nombreUsuario').value;
-const passwordUsuario = document.getElementById('passwordUsuario').value;
-let username;
+// LOG IN
 
-// LOGUEO
-
-/* const imprimirSaludo = () => {
-    saludoUsuario.innerHTML = `Bienvenido ${username}`;
-    inicioSesion.style.display = 'none';
-}
-
-const ejecutarFormulario = () => {
-    username = nombreUsuario.value;
-}
-
-popupLogIn.addEventListener('submit', (e) => {
-    e.preventDefault();
-}) */
-
-
-/* document.getElementById("logIn").addEventListener("submit", function(e)){
-    Swal.fire(
-        'Sesión iniciada con éxito',
-        '',
-        'success'
-    )
-    e.preventDefault();
-}
-
-function login(e){
-    e.preventDefault();
-    if (nombreUsuario == "coder" && passwordUsuario == "1234"){
-        app.style.display = "initial";
-        ventanaLogIn.style.display = "none";
+function logIn() {
+    const usuario = document.querySelector("#usuario").value;
+    const password = document.querySelector("#password").value;
+    if (usuario == "coder" && password === "1234" || usuario == "admin" && password === "1234") {
+        localStorage.setItem("usuario", usuario);
+        localStorage.setItem("password", password);
+        app.style.display = "block";
+        modalForm.style.display = "none";
+        inicioSesion.style.display = "none";
+        document.querySelector(".modal-backdrop").style.display = "none";
+    }else{
+        Swal.fire(
+            'Ingrese un usuario y una contraseña válida',
+            '',
+            'error'
+          )
     }
-} */
+}
 
-// CONTADOR DE PRODUCTOS
+// APLICACIÓN
+// CONTADOR DE PRODUCTOS CARGADOS EN STOCK
 
-/* let cantidadProductos = 0; */
+let cantidadProductos = 0;
 
-// CLASES
+// CLASES CONSTRUCTORAS (APP)
 
-/* class Product{
+class Product{
     constructor(nombre, precio, cantidades){
         this.nombre = nombre;
         this.precio = precio;
@@ -77,24 +48,21 @@ function login(e){
 
 class Interfaz{
     agregaProd(product){
-        cantidadProductos++;
         const productList = document.getElementById("product-list");
-        const element = document.createElement("div");
+        const element = document.createElement('div');
         element.innerHTML = `
-            <div class="card text-center">
+            <div class="card text-center p-2 my-2">
                 <div>
                     <strong>PRODUCTO</strong>: ${product.nombre}
                     <strong>PRECIO</strong>: $${product.precio}
                     <strong>CANTIDADES</strong>: ${product.cantidades}
+                    <div id="horaProducto" class="m-3 text-center">Producto ingresado en: ${horaProducto}
+                    </div>
                     <a href="#" class="btn btn-danger m-1" name="delete">BORRAR</a>
-                </div>
-            </div>
-            <div class="contadorProductos col text-center mt-1 mb-3">
-                <div>
-                    <strong>TOTAL DE ARTÍCULOS INGRESADOS</strong>: ${cantidadProductos}
                 </div>
             </div>`
         productList.appendChild(element);
+        localStorage.setItem("producto", JSON.stringify(product));
         this.resetearForm();
     }
 
@@ -103,7 +71,6 @@ class Interfaz{
     }
     elimProd(element){
         if(element.name === "delete"){
-            cantidadProductos --;
             element.parentElement.parentElement.parentElement.remove();
             Swal.fire(
                 'Producto eliminado',
@@ -113,29 +80,59 @@ class Interfaz{
         }
     }
 }
- */
-// EVENTOS
 
-/* document.getElementById("product-form").addEventListener("submit", function(disableRefresh){
+// EVENTOS (APP)
+
+document.getElementById("product-form").addEventListener("submit", function(e){
     Swal.fire(
         'Producto agregado al stock',
         '',
         'success'
       )
+    cantidadProductos++;
+    contador.innerHTML = cantidadProductos;
     const nombre = document.getElementById("nombre").value;
     const precio = document.getElementById("precio").value;
     const cantidades = document.getElementById("cantidades").value;
     const product = new Product(nombre, precio, cantidades);
     const interfaz = new Interfaz();
     interfaz.agregaProd(product);
-    disableRefresh.preventDefault();
+    e.preventDefault();
 })
 
 document.getElementById("product-list").addEventListener("click", function(e){
     const interfaz = new Interfaz;
-    interfaz.elimProd(e.target)
-}) */
+    if (cantidadProductos == 0){}
+    else{
+        cantidadProductos --;
+        contador.innerHTML = cantidadProductos;
+    }
+    interfaz.elimProd(e.target);
+    localStorage.removeItem("producto");
+})
 
-/* FORMULA QUE VOY A USAR EN EL FUTURO
-    const iva = x => x*0.21;
-    let precioConIva = (iva(precio) + precio); */
+// FETCH (World Time API)
+
+const 
+
+const reloj = document.getElementById("reloj")
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '7812a65835mshb020231a7307c1cp1d6384jsn3ec67c303211',
+		'X-RapidAPI-Host': 'world-time2.p.rapidapi.com'
+	}
+};
+
+fetch('https://world-time2.p.rapidapi.com/ip', options)
+    .then(response => response.json())
+    .then(response => {        
+        document.getElementById('reloj').innerHTML = `<p><strong>${response.datetime}</strong></p>`;
+    })
+    .catch(err => console.error(err));
+
+// IVA
+
+/* const iva = x => x*0.21;
+let precioConIva = (iva(producto.precio) + producto.precio);
+console.log = precioConIva; */
