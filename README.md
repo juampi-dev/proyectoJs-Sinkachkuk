@@ -6,6 +6,12 @@ This is an online stock manager in which you need to log in, you can load produc
 ## Deployed on Netlify
 Link: https://javascript-sinka.netlify.app/
 
+## **Technologies used**
+- HTML
+- CSS
+- Bootstrap
+- JavaScript
+
 ## HOW TO LOGIN / COMO INGRESAR A LA APP:
 - Username/nombre de usuario: "coder" or "admin"
 - Password/contraseña: "1234"
